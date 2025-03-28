@@ -248,30 +248,8 @@ with pd.ExcelWriter("final_result.xlsx", engine="openpyxl") as writer:
                 cell.font = bold_font
                 cell.fill = light_green_fill
 
-        for cell in row[1:]:  # Skip index column for formatting
-            if isinstance(cell.value, (int, float)):  # Check if cell contains a number
-                if cell.value == 0:
-                    cell.value = ""  # Replace zero with empty cell
-                else:
-                    cell.number_format = "#,##,##0"  # Apply Indian number format (1,00,000)
-
-            cell.alignment = Alignment(horizontal="center", vertical="center")  # Center alignment
-            cell.border = thin_border  # Apply border
-         
-            # Rename headers for first two columns
-            worksheet["A2"] = "SubTeaType"
-            worksheet["B2"] = "Grade"
-
-            # Make headers bold
-            worksheet["A2"].font = Font(bold=True)
-            worksheet["B2"].font = Font(bold=True)
-    
-        # Increase the width of the first two columns
-        worksheet.column_dimensions['A'].width = 15  # Adjust width for SubTeaType
-        worksheet.column_dimensions['B'].width = 15  # Adjust width for GradeMDM
-        
           
-
-
     # Save the workbook
     workbook.save("final_result.xlsx")
+    
+    #addition of new commit
